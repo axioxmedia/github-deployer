@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GitHub Deploy Desk</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;600&family=Sora:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/styles.css" />
+</head>
+<body class="aio-app axiox-shell">
+  <div class="bg-grid"></div>
+  <main class="app">
+    <header class="topbar">
+      <div class="brand">
+        <div class="mark">G</div>
+        <div>
+          <h1 data-i18n="appTitle">GitHub 部署台</h1>
+          <p data-i18n="appSubtitle">先解析仓库并阅读 README，确认后再部署</p>
+        </div>
+      </div>
+      <div class="top-actions">
+        <div class="lang-switch" id="uiLangSwitch">
+          <button type="button" data-ui-lang="zh">中文</button>
+          <button type="button" data-ui-lang="en">EN</button>
+        </div>
+        <div class="chip" id="platformChip">D:</div>
+      </div>
+    </header>
+
+    <section class="stage">
+      <article class="card panel">
+        <div class="kicker">Deploy Desk</div>
+        <h2 data-i18n="formTitle">投放一个仓库</h2>
+
+        <label for="url" data-i18n="urlLabel">GitHub 链接</label>
+        <div class="field">
+          <span class="icon">⌘</span>
+          <input id="url" type="text" data-i18n-placeholder="urlPlaceholder" placeholder="https://github.com/debpalash/VoiceStudio" autocomplete="off" />
+        </div>
+
+        <div class="split">
+          <div>
+            <label for="dest" data-i18n="destLabel">部署路径</label>
+            <div class="field">
+              <span class="icon">📁</span>
+              <input id="dest" type="text" placeholder="D:\Projects" />
+            </div>
+          </div>
+          <div>
+            <label for="folder" data-i18n="folderLabel">文件夹名称</label>
+            <div class="field">
+              <span class="icon">#</span>
+              <input id="folder" type="text" placeholder="VoiceStudio" />
+            </div>
+          </div>
+          <button class="soft" id="pickDir" type="button" data-i18n="browse">浏览</button>
+        </div>
+        <p class="hint" id="pathHint"></p>
+
+        <label for="token" data-i18n="tokenLabel">GitHub Token（可选，提高 API 限额 / 私有仓库）</label>
+        <div class="field token-row">
+          <span class="icon">⚿</span>
+          <input id="token" type="password" data-i18n-placeholder="tokenPlaceholder" placeholder="ghp_… 可留空" />
+        </div>
+
+        <button class="primary" id="go" type="button" data-i18n="inspectBtn">解析仓库</button>
+      </article>
+
+      <article class="card panel" id="rightCard">
+        <div id="phaseReadme">
+          <div id="readmeMount">
+            <div id="readmeUnit">
+              <div class="readme-bar">
+                <div>
+                  <div class="kicker">README</div>
+                  <h2 data-i18n="readmeTitle">项目说明</h2>
+                </div>
+                <select id="readmeLang" hidden></select>
+              </div>
+              <div class="readme empty" id="readme">先在左侧粘贴链接并解析</div>
+            </div>
+          </div>
+          <button class="primary" id="confirmDeploy" type="button" data-i18n="confirmDeploy" hidden>确认部署</button>
+        </div>
+
+        <div id="phaseProgress" hidden>
+          <div class="kicker">Preview</div>
+          <h2 data-i18n="previewTitle">仓库与进度</h2>
+          <div class="repo empty" id="repoCard"></div>
+          <div class="terminal">
+            <div class="term-bar">
+              <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+              <span style="margin-left:8px">deploy.log</span>
+            </div>
+            <div class="term-body" id="log"></div>
+            <div class="progress" id="progress"><div class="bar" id="bar"></div></div>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="card panel readme-wrap" id="readmeDock" hidden>
+      <div id="dockMount"></div>
+    </section>
+  </main>
+
+  <div class="modal-bg" id="modal">
+    <div class="modal">
+      <div class="kicker">Installer found</div>
+      <h3 data-i18n="modalTitle">发现可直接安装的包</h3>
+      <p id="modalText"></p>
+      <div class="assets" id="assets"></div>
+      <div class="modal-actions">
+        <button class="danger" id="chooseSource" type="button" data-i18n="downloadSource">下载源码</button>
+        <button class="primary" id="chooseInstall" type="button" style="margin-top:0" data-i18n="downloadInstall">下载并安装</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/assets/app.js"></script>
+</body>
+</html>

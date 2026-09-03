@@ -1,0 +1,18 @@
+Build EXE on Windows
+====================
+
+1. Install Python 3.11 or 3.12 from:
+   https://www.python.org/downloads/windows/
+   MUST check: "Add python.exe to PATH"
+
+2. Double-click:
+   build_exe.bat
+
+   Or in PowerShell:
+   powershell -ExecutionPolicy Bypass -File .\build_exe.ps1
+
+3. Result:
+   dist\GitHubDeployDesk.exe
+
+If Windows says python is not recognized, close the terminal,
+re-open it after installing Python, then run the bat again.
