@@ -19,6 +19,10 @@
     <img src="https://img.shields.io/badge/ui-zh%20%2F%20en-7ee0c6?style=flat-square" alt="Chinese and English UI" />
     <img src="https://img.shields.io/badge/license-MIT-blue?style=flat-square" alt="MIT license" />
   </p>
+
+  <p>
+    <img src="https://raw.githubusercontent.com/axioxmedia/github-deployer/refs/heads/main/caps.png" alt="Screenshot" />
+  </p>
 </div>
 
 > [!WARNING]
