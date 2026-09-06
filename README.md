@@ -21,7 +21,7 @@
   </p>
 
   <p>
-    <img src="https://raw.githubusercontent.com/axioxmedia/github-deployer/refs/heads/main/caps.png" alt="Screenshot" />
+    <img src="https://raw.githubusercontent.com/axioxmedia/github-deployer/refs/heads/main/APPCap.png" alt="Screenshot" />
   </p>
 </div>
 
